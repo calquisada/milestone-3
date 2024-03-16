@@ -32,24 +32,38 @@ h1 {
 }
 
 h2 {
-  padding: 20px;
+  padding: 10px;
+}
+
+h3 {
+  padding: 10px;
 }
 
 main {
   text-align: center;
-  width: 50%;
   margin: 0 auto;
-  padding: 40px;
+  padding: 20px;
 }
 
-button {
+.row {
+  color: #2E2C2F;
+  padding: 20px;
+}
+
+.input {
+  padding: 20px;
+}
+
+.form-control {
+  background-color: #F3E8EE;
+  color: #2E2C2F;
+  margin: 0 auto;
+  width: 70%;
+}
+
+.button {
   background-color: #475B63;
   color: #F3E8EE;
   padding: 10px 20px 10px 20px;
   border-radius: 10px;
-}
-
-.form-box {
-  background-color: #F3E8EE;
-  color: #2E2C2F;
 }

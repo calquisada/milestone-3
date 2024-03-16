@@ -19,7 +19,7 @@ app.use(methodOverride('_method'))
 mongoose.set('useFindAndModify', false);
 
 //Controllers
-app.use('/wishlist', require('./controllers/listcontroller.js'))
+app.use('/todolist', require('./controllers/listcontroller.js'))
 
 //Routes
 app.get('/', (req, res) => {
