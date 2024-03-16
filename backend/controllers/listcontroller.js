@@ -26,10 +26,27 @@ Todo.post('/', (req, res) => {
 })
 
 // Deleting a Todo
-Todo.delete('/:id', (req, res) => {})  
+Todo.delete('/:id', (req, res) => {})
+    db.Todo.findByIdAndDelete(req.params.id)
+        .then(() => {
+            res.redirect('') // Fill in
+        })
+        .catch(err => {
+            console.error(err); // Can be turned into res.render('error404') once we get 404 pages done
+            res.status(500).send('Server Error');
+        })
 
 // Editing a Todo
-Todo.put('/:id', (req, res) => {})
+Todo.put('/:id', (req, res) => {
+    db.Todo.findByIdAndUpdate(req.params.id, req.body)
+        .then(() => {
+            res.redirect() // Fill in
+        })
+        .catch(err => {
+            console.error(err); // Can be turned into res.render('error404') once we get 404 pages done
+            res.status(500).send('Server Error');
+        })
+})
 
 
 module.exports = Todo
