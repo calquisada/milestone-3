@@ -1,5 +1,5 @@
-const express = require('express');
-const Todo = require("../models/");
+const Todo = require('express').Router()
+const db = require('../models')
 
 // Home Page
 Todo.get('/', (req, res) => {
@@ -30,3 +30,6 @@ Todo.delete('/:id', (req, res) => {})
 
 // Editing a Todo
 Todo.put('/:id', (req, res) => {})
+
+
+module.exports = Todo
