@@ -27,7 +27,7 @@ Todo.post('/', (req, res) => {
 
 // Deleting a Todo
 Todo.delete('/:id', (req, res) => {})
-    db.Todo.findByIdAndDelete(req.params.id)
+    db.Todos.findByIdAndDelete(req.params.id)
         .then(() => {
             res.redirect('') // Fill in
         })
@@ -38,7 +38,7 @@ Todo.delete('/:id', (req, res) => {})
 
 // Editing a Todo
 Todo.put('/:id', (req, res) => {
-    db.Todo.findByIdAndUpdate(req.params.id, req.body)
+    db.Todos.findByIdAndUpdate(req.params.id, req.body)
         .then(() => {
             res.redirect() // Fill in
         })
