@@ -4,8 +4,8 @@ const db = require('../models')
 // Home Page
 Todo.get('/', (req, res) => {
     db.Todos.find() 
-        .then(todos => {
-            res.render('index', { todos }); 
+        .then(Todos => { 
+            res.render('index', { Todos }); 
         })
         .catch(err => {
             console.error(err); // Can be turned into res.render('error404') once we get 404 pages done
