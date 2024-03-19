@@ -1,18 +1,25 @@
 const Todo = require('express').Router()
 const db = require('../models')
 
+const { User, ToDoList } = db
 
 // Home Page
-Todo.get('/', (req, res) => {
-    db.Todos.find() 
-        .then(Todos => { 
-            res.render('components/homepage', { Todos }); 
-        })
-        .catch(err => {
-            console.error(err); // Can be turned into res.render('error404') once we get 404 pages done
-            res.status(500).send('Server Error');
-    });
-});
+// Todo.get('/', (req, res) => {
+//     db.Todos.find() 
+//         .then(Todos => { 
+//             res.render('components/homepage', { Todos }); 
+//         })
+//         .catch(err => {
+//             console.error(err); // Can be turned into res.render('error404') once we get 404 pages done
+//             res.status(500).send('Server Error');
+//     });
+// });
+
+Todo.get('/todolist', async (req, res) => {
+    const lists = await ToDoList.findAll()
+    res.json(lists)
+})
+
 
 // Adding a new Todo
 Todo.post('/', (req, res) => {

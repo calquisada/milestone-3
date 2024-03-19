@@ -1,5 +1,6 @@
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import React from 'react';
+import { Route, Routes } from 'react-router-dom'
 // import LoginForm from './users/login'
 import SignUpForm from './users/signup'
 import CurrentUserProvider from './contexts/CurrentUser'
@@ -13,17 +14,15 @@ import TodoListShow from './components/showlist'
 function App() {
   return (
     <CurrentUserProvider>
-      <BrowserRouter>
         <NavBar />
-          <Switch>
+          <Routes>
             <Route exact path="/login" component={LogInForm} />
             <Route exact path="/signup" component={SignUpForm} />
             <Route exact path="/todolist" component={ToDoIndex} />
             <Route exact path="/todolist/new" component={NewList} />
             <Route exact path="/todolist/:TodolistId" component={TodoListShow} />
             <Route exact path="/todolist/:TodolistId" component={EditList} />
-          </Switch>
-      </BrowserRouter>
+          </Routes>
     </CurrentUserProvider>
   )
 }
