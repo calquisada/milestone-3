@@ -1,35 +1,27 @@
-//Dependencies
-const express = require('express')
-const methodOverride = require('method-override')
-
-// Configuaration
+// Modules and Globals
 require('dotenv').config()
-const PORT = process.env.PORT
-console.log(PORT)
-const app = express()
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors');
+const app = express();
+const defineCurrentUser = require('./middleware/defineCurrentUser')
 
-// Middleware
-app.set('views', __dirname + '/views')
-app.set('view engine', 'jsx')
-app.engine('jsx', require('express-react-views').createEngine())
+// Express Settings
+app.use(cors())
 app.use(express.static('public'))
-app.use(express.urlencoded({extended: true}))
-app.use(methodOverride('_method'))
+app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+app.use(defineCurrentUser)
 
-//Controllers
+// Controllers & Routes
+
+app.use(express.urlencoded({ extended: true }))
+
 app.use('/todolist', require('./controllers/listcontroller.js'))
+app.use('/users', require('./controllers/users'))
+app.use('/authentication', require('./controllers/authentication'))
 
-//Routes
-app.get('/', (req, res) => {
-    res.render('home')
-})
-
-// 404 Page
-app.get('*', (req, res) => {
-    res.send('404')
-})
-
-//Listen
-app.listen(PORT, () => {
-    console.log("listening on port", PORT)
+// Listen for Connections
+app.listen(process.env.PORT, () => {
+    console.log(`Listening on ${process.env.PORT}`)
 })
