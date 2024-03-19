@@ -20,15 +20,6 @@ router.post('/', async (req, res) => {
     if(req.currentUser?.role !== 'admin'){
         return res.status(403).json({ message: 'You are not allowed to add a todo'})
     }
-    if (!req.body.pic) {
-        req.body.pic = 'http://placekitten.com/400/400'
-    }
-    if (!req.body.city) {
-        req.body.city = 'Anytown'
-    }
-    if (!req.body.state) {
-        req.body.state = 'USA'
-    }
     const todo = await ToDoList.create(req.body)
     res.json(todo)
 })
