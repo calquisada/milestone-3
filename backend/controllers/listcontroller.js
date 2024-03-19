@@ -4,56 +4,77 @@ const db = require('../models')
 const { User, ToDoList } = db
 
 // Home Page
-// Todo.get('/', (req, res) => {
-//     db.Todos.find() 
-//         .then(Todos => { 
-//             res.render('components/homepage', { Todos }); 
-//         })
-//         .catch(err => {
-//             console.error(err); // Can be turned into res.render('error404') once we get 404 pages done
-//             res.status(500).send('Server Error');
-//     });
-// });
-
-Todo.get('/todolist', async (req, res) => {
-    const lists = await ToDoList.findAll()
-    res.json(lists)
+router.get('/', async (req, res) => {
+    const todo = await ToDoList.findAll()
+    res.json(todo)
 })
+
+//Todo.get('/todolist', async (req, res) => {
+  //  const lists = await ToDoList.findAll()
+    //res.json(lists)
+// })
 
 
 // Adding a new Todo
-Todo.post('/', (req, res) => {
-    db.Todos.create(req.body)
-        .then(() => {
-            res.redirect('components/newlist') // Fill in
-        })
-        .catch(err => {
-            console.error(err); // Can be turned into res.render('error404') once we get 404 pages done
-            res.status(500).send('Server Error');
-        })
+router.post('/', async (req, res) => {
+    if(req.currentUser?.role !== 'admin'){
+        return res.status(403).json({ message: 'You are not allowed to add a todo'})
+    }
+    if (!req.body.pic) {
+        req.body.pic = 'http://placekitten.com/400/400'
+    }
+    if (!req.body.city) {
+        req.body.city = 'Anytown'
+    }
+    if (!req.body.state) {
+        req.body.state = 'USA'
+    }
+    const todo = await ToDoList.create(req.body)
+    res.json(todo)
 })
 
 // Deleting a Todo
-Todo.delete('/:id', (req, res) => {})
-    db.Todos.findByIdAndDelete(req.params.id)
-        .then(() => {
-            res.redirect('components/showlist') // Fill in
+router.delete('/:ToDoListId', async (req, res) => {
+    if(req.currentUser?.role !== 'admin'){
+        return res.status(403).json({ message: 'You are not allowed to delete'})
+    }
+    let ToDoListId = Number(req.params.ToDoListId)
+    if (isNaN(ToDoListId)) {
+        res.status(404).json({ message: `Invalid id "${ToDoListId}"` })
+    } else {
+        const todo = await ToDoList.findOne({
+            where: {
+                ToDoListId: ToDoListId
+            }
         })
-        .catch(err => {
-            console.error(err); // Can be turned into res.render('error404') once we get 404 pages done
-            res.status(500).send('Server Error');
-        })
-
+        if (!todo) {
+            res.status(404).json({ message: `Could not find todo with id "${ToDoListId}"` })
+        } else {
+            await todo.destroy()
+            res.json(todo)
+        }
+    }
+})
 // Editing a Todo
-Todo.put('/:id', (req, res) => {
-    db.Todos.findByIdAndUpdate(req.params.id, req.body)
-        .then(() => {
-            res.redirect('components/editlist') // Fill in
+router.put('/:ToDoListId', async (req, res) => {
+    if(req.currentUser?.role !== 'admin'){
+        return res.status(403).json({ message: 'You are not allowed to edit'})
+    }
+    let ToDoListId = Number(req.params.ToDoListId)
+    if (isNaN(placeId)) {
+        res.status(404).json({ message: `Invalid id "${ToDoListId}"` })
+    } else {
+        const todo = await ToDoList.findOne({
+            where: { ToDoListId: ToDoListId },
         })
-        .catch(err => {
-            console.error(err); // Can be turned into res.render('error404') once we get 404 pages done
-            res.status(500).send('Server Error');
-        })
+        if (!todo) {
+            res.status(404).json({ message: `Could not find todo with id "${ToDoListId}"` })
+        } else {
+            Object.assign(todo, req.body)
+            await todo.save()
+            res.json(todo)
+        }
+    }
 })
 
 
