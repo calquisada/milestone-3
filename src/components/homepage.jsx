@@ -5,7 +5,7 @@ function ToDoIndex(data) {
 
 	const history = useHistory()
 	
-	const [todos, setTodos] = useState([])
+	const [todo, setTodos] = useState([])
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -16,20 +16,20 @@ function ToDoIndex(data) {
 		fetchData()
 	}, [])
 
-	let todosFormatted = todos.map((todo) => {
+	let todosFormatted = todo.map((todolist) => {
 		return (
-			<div className="col-sm-6" key={todo.todoId}>
+			<div className="col-sm-6" key={todolist.TodolistId}>
 				<h2>
-					<a href="#" onClick={() => history.push(`/todos/${todo.todoId}`)} >
-						{todo.name}
+					<a href="#" onClick={() => history.push(`/todolist/${todolist.TodolistId}`)} >
+						{todolist.listname}
 					</a>
 				</h2>
 				<p className="text-center">
-					{todo.listitem1}
-                    {todo.listitem2}
-                    {todo.listitem3}
-                    {todo.listitem4}
-                    {todo.listitem5}
+					{todolist.listitem1}
+                    {todolist.listitem2}
+                    {todolist.listitem3}
+                    {todolist.listitem4}
+                    {todolist.listitem5}
 				</p>
 			</div>
 		)
