@@ -1,11 +1,11 @@
 'use strict';
 
 const {
-  Model
+  User
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   
-    Model.init({
+    User.init({
     userId: {
       type: DataTypes.SMALLINT,
       primaryKey: true,
@@ -28,5 +28,5 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true,
     modelName: 'User',
   });
-  return Model;
+  return User;
 };
