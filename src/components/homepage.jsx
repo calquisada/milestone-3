@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 function ToDoIndex(data) {
 
-	const history = useHistory()
+	const history = useNavigate()
 	
 	const [todo, setTodos] = useState([])
 

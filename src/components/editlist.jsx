@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
-import { useHistory, useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 
 function EditList() {
 
-	const history = useHistory()
+	const history = useNavigate()
 
     const { TodolistId } = useParams()
 

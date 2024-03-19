@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 
 function TodoListShow() {
 
 	const { TodolistId } = useParams()
 
-	const history = useHistory()
+	const history = useNavigate()
 
 	const [todo, setTodo] = useState(null)
 

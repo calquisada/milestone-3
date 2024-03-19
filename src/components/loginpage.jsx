@@ -11,7 +11,7 @@ function LogInForm() {
                     <h3>Not signed up?</h3>
                     <button className='button'>Sign Up Now</button>
                 </header>
-                <LogInForm />
+                <LoginForm />
             </div>
         </body>
     );

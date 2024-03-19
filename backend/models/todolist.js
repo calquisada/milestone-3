@@ -1,10 +1,10 @@
 'use strict';
 
-const { Model } = require('sequelize');
+const { ToDoList } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
 
-  Model.init({
+  ToDoList.init({
     TodolistId: {
       type: DataTypes.SMALLINT,
       primaryKey: true,
@@ -22,5 +22,5 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true,
     modelName: 'ToDoList',
   });
-  return Model;
+  return ToDoList;
 };

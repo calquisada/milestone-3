@@ -1,9 +1,9 @@
 import { useState } from "react"
-import { useHistory } from "react-router"
+import { useNavigate } from "react-router"
 
 function NewList() {
 
-	const history = useHistory()
+	const history = useNavigate()
 
 	const [todo, setTodo] = useState({
 		listname: '',
