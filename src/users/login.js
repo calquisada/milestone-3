@@ -6,7 +6,7 @@ function LoginForm() {
 
     const history = useNavigate()
 
-    // const { setCurrentUser } = useContext(CurrentUser)
+    const { setCurrentUser } = useContext(CurrentUser)
 
     const [credentials, setCredentials] = useState({
         email: '',
@@ -28,7 +28,7 @@ function LoginForm() {
         const data = await response.json()
 
         if (response.status === 200) {
-            // setCurrentUser(data.user)
+            setCurrentUser(data.user)
             localStorage.setItem('token', data.token)
             history.push(`/`)
         } else {
