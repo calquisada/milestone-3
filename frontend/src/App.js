@@ -6,7 +6,7 @@ import SignUpForm from './users/signup'
 import CurrentUserProvider from './contexts/CurrentUser'
 import EditList from './components/editlist'
 import ToDoIndex from './components/homepage'
-import LogInForm from './components/loginpage'
+import LogInForm from './Home'
 import NavBar from './components/navbar'
 import NewList from './components/newlist'
 import TodoListShow from './components/showlist'
@@ -16,7 +16,7 @@ function App() {
     <CurrentUserProvider>
         <NavBar />
           <Routes>
-            <Route exact path="/login" component={LogInForm} />
+            <Route exact path="/" component={LogInForm} />
             <Route exact path="/signup" component={SignUpForm} />
             <Route exact path="/todolist" component={ToDoIndex} />
             <Route exact path="/todolist/new" component={NewList} />

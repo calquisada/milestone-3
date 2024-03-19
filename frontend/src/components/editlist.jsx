@@ -18,7 +18,7 @@ function EditList() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(`http://localhost:3000/todolist/${TodolistId}`)
+			const response = await fetch(`http://localhost:5000/todolist/${TodolistId}`)
 			const resData = await response.json()
 			setTodo(resData)
 		}
@@ -28,7 +28,7 @@ function EditList() {
 	async function handleSubmit(e) {
 		e.preventDefault()
 
-		await fetch(`http://localhost:3000/todolist/${todo.TodolistId}`, {
+		await fetch(`http://localhost:5000/todolist/${todo.TodolistId}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json'
@@ -41,6 +41,7 @@ function EditList() {
 
 	return (
 		<main>
+			<h1>test</h1>
 			{/* Edit list code */}
         </main>
 	)

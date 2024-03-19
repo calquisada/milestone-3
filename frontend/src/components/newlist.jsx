@@ -17,7 +17,7 @@ function NewList() {
 	async function handleSubmit(e) {
 		e.preventDefault()
 
-		await fetch(`http://localhost:3000/todolist`, {
+		await fetch(`http://localhost:5000/todolist`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -30,6 +30,7 @@ function NewList() {
 
 	return (
 		<main>
+			<h1>test</h1>
             {/* code for new lists */}
         </main>
 	)

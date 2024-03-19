@@ -9,7 +9,7 @@ function ToDoIndex(data) {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(`http://localhost:3000/todolist`)
+			const response = await fetch(`http://localhost:5000/todolist`)
 			const resData = await response.json()
 			setTodos(resData)
 		}

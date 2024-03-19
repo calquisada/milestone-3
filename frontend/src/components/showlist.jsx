@@ -11,7 +11,7 @@ function TodoListShow() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(`http://localhost:3000/todolist/${TodolistId}`)
+			const response = await fetch(`http://localhost:5000/todolist/${TodolistId}`)
 			const resData = await response.json()
 			setTodo(resData)
 		}
@@ -23,7 +23,7 @@ function TodoListShow() {
 	}
 
 	async function deleteToDoList() {
-		await fetch(`http://localhost:3000/todolist/${todo.TodolistId}`, {
+		await fetch(`http://localhost:5000/todolist/${todo.TodolistId}`, {
 			method: 'DELETE'
 		})
 		history.push('/todolist')
@@ -31,6 +31,7 @@ function TodoListShow() {
 
 	return (
 		<main>
+			<h1>test</h1>
 			{/* show list code */}
 		</main>
 	)
