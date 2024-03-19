@@ -1,6 +1,7 @@
 const Todo = require('express').Router()
 const db = require('../models')
 
+
 // Home Page
 Todo.get('/', (req, res) => {
     db.Todos.find() 
