@@ -4,7 +4,7 @@ const db = require('../models')
 const { User, ToDoList } = db
 
 // Home Page
-router.get('/', async (req, res) => {
+Todo.get('/', async (req, res) => {
     const todo = await ToDoList.findAll()
     res.json(todo)
 })
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
 
 // Adding a new Todo
-router.post('/', async (req, res) => {
+Todo.post('/', async (req, res) => {
     if(req.currentUser?.role !== 'admin'){
         return res.status(403).json({ message: 'You are not allowed to add a todo'})
     }
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 })
 
 // Deleting a Todo
-router.delete('/:ToDoListId', async (req, res) => {
+Todo.delete('/:ToDoListId', async (req, res) => {
     if(req.currentUser?.role !== 'admin'){
         return res.status(403).json({ message: 'You are not allowed to delete'})
     }
@@ -47,7 +47,7 @@ router.delete('/:ToDoListId', async (req, res) => {
     }
 })
 // Editing a Todo
-router.put('/:ToDoListId', async (req, res) => {
+Todo.put('/:ToDoListId', async (req, res) => {
     if(req.currentUser?.role !== 'admin'){
         return res.status(403).json({ message: 'You are not allowed to edit'})
     }
