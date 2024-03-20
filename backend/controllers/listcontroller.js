@@ -1,5 +1,6 @@
-const Todo = require('express').Router()
-const db = require('../models')
+const express = require('express');
+const Todo = require('express').Router();
+const db = require('../models');
 
 const { User, ToDoList } = db
 
