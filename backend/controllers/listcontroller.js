@@ -9,11 +9,6 @@ Todo.get('/', async (req, res) => {
     res.json(todo)
 })
 
-//Todo.get('/todolist', async (req, res) => {
-  //  const lists = await ToDoList.findAll()
-    //res.json(lists)
-// })
-
 
 // Adding a new Todo
 Todo.post('/', async (req, res) => {
