@@ -1,9 +1,9 @@
 import { useState } from "react"
-import { useNavigate } from "react-router"
+import { useHistory } from "react-router"
 
 function SignUpForm() {
 
-	const history = useNavigate()
+	const history = useHistory()
 
 	const [user, setUser] = useState({
 		firstName: '',
