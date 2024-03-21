@@ -57,7 +57,6 @@ function NewList() {
 				<div className="form-group">
 					<label htmlFor="listitem2">List Item #2</label>
 					<input
-						required
 						value={todo.listitem2}
 						onChange={e => setTodo({ ...todo, listitem2: e.target.value })}
 						className="form-control"
@@ -68,7 +67,6 @@ function NewList() {
 				<div className="form-group">
 					<label htmlFor="listitem3">List Item #3</label>
 					<input
-						required
 						value={todo.listitem3}
 						onChange={e => setTodo({ ...todo, listitem3: e.target.value })}
 						className="form-control"
@@ -79,7 +77,6 @@ function NewList() {
 				<div className="form-group">
 					<label htmlFor="listitem4">List Item #4</label>
 					<input
-						required
 						value={todo.listitem4}
 						onChange={e => setTodo({ ...todo, listitem4: e.target.value })}
 						className="form-control"
@@ -90,7 +87,6 @@ function NewList() {
 				<div className="form-group">
 					<label htmlFor="listitem5">List Item #5</label>
 					<input
-						required
 						value={todo.listitem5}
 						onChange={e => setTodo({ ...todo, listitem5: e.target.value })}
 						className="form-control"

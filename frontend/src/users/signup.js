@@ -9,7 +9,7 @@ function SignUpForm() {
 		firstName: '',
 		lastName: '',
 		email: '',
-		password: ''
+		password_digest: ''
 	})
 
 	async function handleSubmit(e) {
@@ -23,7 +23,7 @@ function SignUpForm() {
 			body: JSON.stringify(user)
 		})
 
-		history.push(`/`)
+		history.push(`/todolist`)
 	}
 
 	return (
@@ -72,15 +72,15 @@ function SignUpForm() {
 						<input
 							type="password"
 							required
-							value={user.password}
-							onChange={e => setUser({ ...user, password: e.target.value })}
+							value={user.password_digest}
+							onChange={e => setUser({ ...user, password_digest: e.target.value })}
 							className="form-control"
-							id="password"
-							name="password"
+							id="password_digest"
+							name="password_digest"
 						/>
 					</div>
 				</div>
-				<input className="button" type="submit" value="Sign Up" />
+				<input className="btn btn-primary" type="submit" value="Sign Up" />
 			</form>
 		</main>
 	)
