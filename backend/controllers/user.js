@@ -2,15 +2,9 @@ const router = require('express').Router()
 const db = require("../models")
 const bcrypt = require('bcryptjs')
 
-const {User} = db
-// put placeholder while waiting for keywords from group
-router.post('/', async (req,res) => {
-    let {password, ...placeholder} = req.body;
-    const user = await User.create({
-        ...placeholder,
-        role: 'author',
-        passwordDigest: await bcrypt.hash(password, 20)
-    })
+const { User } = db
+router.post('/', async (req, res) => {
+    const user = await User.create(req.body)
     res.json(user)
 })
 
