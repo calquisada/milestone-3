@@ -17,7 +17,7 @@ app.use(defineCurrentUser)
 
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/todolist', require('./controllers/listcontroller.js'))
+app.use('/todo', require('./controllers/Todo.js'))
 app.use('/users', require('./controllers/user'))
 app.use('/authentication', require('./controllers/authentication'))
 

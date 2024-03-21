@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
         where: { email: req.body.email }
     })
 
-    if (!user || !await bcrypt.compare(req.body.password, user.passwordDigest)) {
+    if (!user || !await bcrypt.compare(req.body.password, user.password_digest)) {
         res.status(404).json({ message: `The email or password provided is invalid.` })
     } else {
         const result = await jwt.encode(process.env.JWT_SECRET, { id: user.userId })

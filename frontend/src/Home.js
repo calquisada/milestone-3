@@ -7,7 +7,7 @@ function LogInForm() {
     const history = useHistory()
 
     return (
-        <body>
+        <main>
             <div className="App">
                 <header>
                     <h1>To Do List</h1>
@@ -17,7 +17,7 @@ function LogInForm() {
                 </header>
                 <LoginForm />
             </div>
-        </body>
+        </main>
     );
 }
 

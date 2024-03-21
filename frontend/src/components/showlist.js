@@ -4,7 +4,7 @@ import { CurrentUser } from "../contexts/CurrentUser";
 
 function TodoListShow() {
 
-	const { TodolistId } = useParams()
+	const { id } = useParams()
 
 	const history = useHistory()
 
@@ -14,38 +14,27 @@ function TodoListShow() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(`http://localhost:5000/todolist/${TodolistId}`)
+			const response = await fetch(`http://localhost:5000/todo/${id}`)
 			const resData = await response.json()
 			setTodo(resData)
 		}
 		fetchData()
-	}, [TodolistId])
+	}, [id])
+	
+	if (todo==null){
+		return <h1>Loading</h1>
+	}
 
 	function editToDoList() {
-		history.push(`/todolist/${todo.TodolistId}/edit`)
+		history.push(`/todo/${todo.id}/edit`)
 	}
 
 	async function deleteToDoList() {
-		await fetch(`http://localhost:5000/todolist/${todo.TodolistId}`, {
+		await fetch(`http://localhost:5000/todo/${todo.id}`, {
 			method: 'DELETE'
 		})
-		history.push('/todolist')
+		history.push('/todo')
     }
-
-	let listActions = null
-
-	if (currentUser?.role === 'admin') {
-		listActions = (
-			<>
-				<button className="btn btn-warning" onClick={editToDoList}>
-					Edit
-				</button>{` `}
-				<button type="submit" className="btn btn-danger" onClick={deleteToDoList}>
-					Delete
-				</button>
-			</>
-		)
-	}
 
 	return (
 		<main>
@@ -61,7 +50,12 @@ function TodoListShow() {
 							{todo.listitem5}
 						</li>
 					</ul>
-					{listActions}
+					<button className="btn btn-warning" onClick={editToDoList}>
+						Edit
+					</button>{` `}
+					<button type="submit" className="btn btn-danger" onClick={deleteToDoList}>
+						Delete
+					</button>
 				</div>
 			</div>
 		</main>
