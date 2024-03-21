@@ -10,7 +10,7 @@ function LoginForm() {
 
     const [credentials, setCredentials] = useState({
         email: '',
-        password: ''
+        password_digest: ''
     })
 
     const [errorMessage, setErrorMessage] = useState(null)
@@ -30,7 +30,7 @@ function LoginForm() {
         if (response.status === 200) {
             setCurrentUser(data.user)
             localStorage.setItem('token', data.token)
-            history.push(`/`)
+            history.push(`/todolist`)
         } else {
             setErrorMessage(data.message)
         }
@@ -65,11 +65,11 @@ function LoginForm() {
                         <input
                             type="password"
                             required
-                            value={credentials.password}
-                            onChange={e => setCredentials({ ...credentials, password: e.target.value })}
+                            value={credentials.password_digest}
+                            onChange={e => setCredentials({ ...credentials, password_digest: e.target.value })}
                             className="form-control"
-                            id="password"
-                            name="password"
+                            id="password_digest"
+                            name="password_digest"
                         />
                     </div>
                 </div>

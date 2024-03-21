@@ -1,32 +1,26 @@
 'use strict';
-
 const {
-  User
+    Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  
-    User.init({
-    userId: {
-      type: DataTypes.SMALLINT,
-      primaryKey: true,
-      autoIncrement: true
+    class User extends Model {
 
-    },
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    role: {
-      type: DataTypes.ENUM,
-      values: [
-        'reviewer',
-        'admin',
-      ],
-    },
-    passwordDigest: DataTypes.STRING
-  }, {
-    sequelize,
-    underscored: true,
-    modelName: 'User',
-  });
-  return User;
+    };
+    User.init({
+        userId: {
+        type: DataTypes.SMALLINT,
+        primaryKey: true,
+        autoIncrement: true
+
+        },
+        firstName: DataTypes.STRING,
+        lastName: DataTypes.STRING,
+        email: DataTypes.STRING,
+        password_digest: DataTypes.STRING
+    }, {
+        sequelize,
+        underscored: true,
+        modelName: 'User',
+    });
+    return User;
 };
