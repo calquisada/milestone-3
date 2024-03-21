@@ -1,24 +1,23 @@
-const Todo = require('express').Router()
+const router = require('express').Router()
 const db = require('../models')
 
 const { lists } = db
 
 // Home Page
-Todo.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
     const todo = await lists.findAll()
     res.json(todo)
 })
 
-
 // Adding a new Todo
-Todo.post('/', async (req, res) => {
+router.post('/', async (req, res) => {
     const todo = await lists.create(req.body)
     res.json(todo)
 })
 
 // Deleting a Todo
-Todo.delete('/:ToDoListId', async (req, res) => {
-    let ToDoListId = Number(req.params.ToDoListId)
+router.delete('/:id', async (req, res) => {
+    let ToDoListId = Number(req.params.id)
     if (isNaN(ToDoListId)) {
         res.status(404).json({ message: `Invalid id "${ToDoListId}"` })
     } else {
@@ -36,8 +35,9 @@ Todo.delete('/:ToDoListId', async (req, res) => {
     }
 })
 // Editing a Todo
-Todo.put('/:ToDoListId', async (req, res) => {
-    let ToDoListId = Number(req.params.ToDoListId)
+router.put('/:id', async (req, res) => {
+
+    let ToDoListId = Number(req.params.id)
     if (isNaN(placeId)) {
         res.status(404).json({ message: `Invalid id "${ToDoListId}"` })
     } else {
@@ -54,5 +54,22 @@ Todo.put('/:ToDoListId', async (req, res) => {
     }
 })
 
+//Show Page
+router.get('/:id', async (req, res) => {
+    let id = Number(req.params.id)
+    console.log('Hello')
+    if (isNaN(id)) {
+        res.status(404).json({ message: `Invalid id "${id}"` })
+    } else {
+        const todo = await lists.findOne({
+            where: { id: id }
+        })
+        if (!todo) {
+            res.status(404).json({ message: `Could not find place with id "${id}"` })
+        } else {
+            res.json(todo)
+        }
+    }
+})
 
-module.exports = Todo
+module.exports = router
