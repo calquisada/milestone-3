@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useHistory } from "react-router"
 
+
 function SignUpForm() {
 
 	const history = useHistory()
@@ -80,7 +81,7 @@ function SignUpForm() {
 						/>
 					</div>
 				</div>
-				<input className="btn btn-primary" type="submit" value="Sign Up" />
+				<input className="button" type="submit" value="Sign Up" />
 			</form>
 		</main>
 	)

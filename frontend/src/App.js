@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-// import LoginForm from './users/login'
 import SignUpForm from './users/signup'
 import CurrentUserProvider from './contexts/CurrentUser'
 import EditList from './components/editlist'

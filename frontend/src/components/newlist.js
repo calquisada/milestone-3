@@ -17,7 +17,7 @@ function NewList() {
 	async function handleSubmit(e) {
 		e.preventDefault()
 
-		await fetch(`http://localhost:5000/todolist`, {
+		await fetch(`http://localhost:5000/todo`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ function NewList() {
 			body: JSON.stringify(todo)
 		})
 
-		history.push('/todolist')
+		history.push('/todo')
 	}
 
 	return (

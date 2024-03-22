@@ -30,7 +30,7 @@ function LoginForm() {
         if (response.status === 200) {
             setCurrentUser(data.user)
             localStorage.setItem('token', data.token)
-            history.push(`/todolist`)
+            history.push(`/todo`)
         } else {
             setErrorMessage(data.message)
         }

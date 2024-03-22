@@ -17,17 +17,17 @@ router.post('/', async (req, res) => {
 
 // Deleting a Todo
 router.delete('/:id', async (req, res) => {
-    let ToDoListId = Number(req.params.id)
-    if (isNaN(ToDoListId)) {
-        res.status(404).json({ message: `Invalid id "${ToDoListId}"` })
+    let id = Number(req.params.id)
+    if (isNaN(id)) {
+        res.status(404).json({ message: `Invalid id "${id}"` })
     } else {
         const todo = await lists.findOne({
             where: {
-                ToDoListId: ToDoListId
+                id: id
             }
         })
         if (!todo) {
-            res.status(404).json({ message: `Could not find todo with id "${ToDoListId}"` })
+            res.status(404).json({ message: `Could not find todo with id "${id}"` })
         } else {
             await todo.destroy()
             res.json(todo)
@@ -37,15 +37,15 @@ router.delete('/:id', async (req, res) => {
 // Editing a Todo
 router.put('/:id', async (req, res) => {
 
-    let ToDoListId = Number(req.params.id)
-    if (isNaN(placeId)) {
-        res.status(404).json({ message: `Invalid id "${ToDoListId}"` })
+    let id = Number(req.params.id)
+    if (isNaN(id)) {
+        res.status(404).json({ message: `Invalid id "${id}"` })
     } else {
         const todo = await lists.findOne({
-            where: { ToDoListId: ToDoListId },
+            where: { id: id },
         })
         if (!todo) {
-            res.status(404).json({ message: `Could not find todo with id "${ToDoListId}"` })
+            res.status(404).json({ message: `Could not find todo with id "${id}"` })
         } else {
             Object.assign(todo, req.body)
             await todo.save()

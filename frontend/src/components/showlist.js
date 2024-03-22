@@ -1,14 +1,11 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router"
-import { CurrentUser } from "../contexts/CurrentUser";
 
 function TodoListShow() {
 
 	const { id } = useParams()
 
 	const history = useHistory()
-
-	const { currentUser } = useContext(CurrentUser)
 
 	const [todo, setTodo] = useState(null)
 
@@ -39,16 +36,14 @@ function TodoListShow() {
 	return (
 		<main>
 			<div className="row">
-				<div className="col-sm-6">
+				<div>
 					<h1>{todo.listname}</h1>
 					<ul>
-						<li>
-							{todo.listitem1}
-							{todo.listitem2}
-							{todo.listitem3}
-							{todo.listitem4}
-							{todo.listitem5}
-						</li>
+						<li>{todo.listitem1}</li>
+						<li>{todo.listitem2}</li>
+						<li>{todo.listitem3}</li>
+						<li>{todo.listitem4}</li>
+						<li>{todo.listitem5}</li>
 					</ul>
 					<button className="btn btn-warning" onClick={editToDoList}>
 						Edit
