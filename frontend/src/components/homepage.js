@@ -18,19 +18,19 @@ function ToDoIndex(data) {
 
 	let todosFormatted = todo.map((todo) => {
 		return (
-			<div className="col-sm-6" key={todo.id}>
+			<div className="card" key={todo.id}>
 				<h2>
-					<a href="#" onClick={() => history.push(`/todo/${todo.id}`)} >
+					<a href="/#" onClick={() => history.push(`/todo/${todo.id}`)} >
 						{todo.listname}
 					</a>
 				</h2>
-				<p className="text-center">
-					{todo.listitem1}
-                    {todo.listitem2}
-                    {todo.listitem3}
-                    {todo.listitem4}
-                    {todo.listitem5}
-				</p>
+				<ul>
+					<li>{todo.listitem1}</li>
+                    <li>{todo.listitem2}</li>
+                    <li>{todo.listitem3}</li>
+                    <li>{todo.listitem4}</li>
+                    <li>{todo.listitem5}</li>
+				</ul>
 			</div>
 		)
 	})
@@ -40,6 +40,7 @@ function ToDoIndex(data) {
 			<div className="row">
 				{todosFormatted}
 			</div>
+			<button className='button' href="/#" onClick={() => history.push("/todo/new")}>Add your own list</button>
 		</main>
 	)
 }
