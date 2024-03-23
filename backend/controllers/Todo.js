@@ -57,7 +57,6 @@ router.put('/:id', async (req, res) => {
 //Show Page
 router.get('/:id', async (req, res) => {
     let id = Number(req.params.id)
-    console.log('Hello')
     if (isNaN(id)) {
         res.status(404).json({ message: `Invalid id "${id}"` })
     } else {
