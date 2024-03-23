@@ -21,9 +21,11 @@ The app is relatively simple and straightforward. This app was done by group B a
 
 ## Technical Information
 This full-stack app was created by using a combination of HTML, CSS, JavaScript, React, and Sequelize.
-- HTML: Used for the structure of the game. Used to set up basic bodies and elements. Class and IDs were also set up in here.
-- CSS: Stylesheet to provide main styling for the game. Class and IDs were used to access certain elements in the HTML.
-- JavaScript: Used to create the logic behind the game. JavaScript was utilized to make the React app work.
+- HTML: Used for the structure of the app. Used to set up basic bodies and elements. Class and IDs were also set up in here.
+- CSS: Stylesheet to provide main styling for the app. Class and IDs were used to access certain elements in the HTML.
+- JavaScript: Used to create the logic behind the app. JavaScript was utilized to make the React app work.
+- React: Created the to-do list using React for front-end.
+- Sequelize: Used for database: list data from users and authentication.
 
 ### Components & Functionality
 - Set up account and create one
