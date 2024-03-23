@@ -15,9 +15,20 @@ function NavBar() {
 
     if (currentUser) {
         loginActions = (
-            <li>
-                Logged in as {currentUser.firstName} {currentUser.lastName}
-            </li>
+            <ul>
+                <li>
+                    Logged in as {currentUser.firstName} {currentUser.lastName}
+                </li>
+            </ul>
+        )
+    }
+
+    let logoutButton = ""
+    if (currentUser) {
+        logoutButton = (
+            <div>
+                <a href="/#" onClick={() => window.location.reload()}>LogOut</a>
+            </div>
         )
     }
 
@@ -33,6 +44,7 @@ function NavBar() {
                         <Nav.Link href="#" onClick={() => history.push("/todo")}>Lists</Nav.Link>
                         <Nav.Link href="#" onClick={() => history.push("/todo/new")}>Add List</Nav.Link>
                         <Nav.Link>{loginActions}</Nav.Link>
+                        <Nav.Link>{logoutButton}</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

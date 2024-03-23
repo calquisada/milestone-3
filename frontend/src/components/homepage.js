@@ -20,7 +20,7 @@ function ToDoIndex(data) {
 		return (
 			<div className="card" key={todo.id}>
 				<h2>
-					<a href="/#" onClick={() => history.push(`/todo/${todo.id}`)} >
+					<a href="#" onClick={() => history.push(`/todo/${todo.id}`)} >
 						{todo.listname}
 					</a>
 				</h2>
