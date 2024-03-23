@@ -21,51 +21,22 @@ function NavBar() {
         )
     }
 
-    let addListButton = null
-
-    if (currentUser?.role === 'admin') {
-        addListButton = (
-            <li>
-                <a href="#" onClick={() => history.push("/todolist/new")}>
-                    Add List
-                </a>
-            </li>
-        )
-    }
-
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className='nav' >
             <Container>
-                <Navbar.Brand href="#home">To Do List</Navbar.Brand>
+                <Navbar.Brand>To Do List</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#" onClick={() => history.push("/")}>Home</Nav.Link>
-                        <Nav.Link href="#" onClick={() => history.push("/todolist")}>Lists</Nav.Link>
                         <Nav.Link href="#" onClick={() => history.push("/")}>Login</Nav.Link>
                         <Nav.Link href="#" onClick={() => history.push("/signup")}>Signup</Nav.Link>
-                        <Nav.Link>{addListButton}</Nav.Link>
+                        <Nav.Link href="#" onClick={() => history.push("/todo")}>Lists</Nav.Link>
+                        <Nav.Link href="#" onClick={() => history.push("/todo/new")}>Add List</Nav.Link>
                         <Nav.Link>{loginActions}</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-        // <nav>
-        //     <ul>
-        //         <li>
-        //             <a href="#" onClick={() => history.push("/")}>
-        //                 Home
-        //             </a>
-        //         </li>
-        //         <li>
-        //             <a href="#" onClick={() => history.push("/todolist")}>
-        //                 Lists
-        //             </a>
-        //         </li>
-        //         {addListButton}
-        //         {loginActions}
-        //     </ul>
-        // </nav>
     )
 }
 

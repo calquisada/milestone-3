@@ -5,7 +5,7 @@ function EditList() {
 
 	const history = useHistory()
 
-    const { TodolistId } = useParams()
+    const { id } = useParams()
 
     const [todo, setTodo] = useState({
 		listname: '',
@@ -18,17 +18,17 @@ function EditList() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(`http://localhost:5000/todolist/${TodolistId}`)
+			const response = await fetch(`http://localhost:5000/todo/${id}`)
 			const resData = await response.json()
 			setTodo(resData)
 		}
 		fetchData()
-	}, [ TodolistId ])
+	}, [ id ])
 
 	async function handleSubmit(e) {
 		e.preventDefault()
 
-		await fetch(`http://localhost:5000/todolist/${todo.TodolistId}`, {
+		await fetch(`http://localhost:5000/todo/${todo.id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json'
@@ -36,8 +36,9 @@ function EditList() {
 			body: JSON.stringify(todo)
 		})
 
-		history.push(`/todolist/${todo.TodolistId}`)
+		history.push(`/todo/${todo.id}`)
 	}
+
 
 	return (
 		<main>

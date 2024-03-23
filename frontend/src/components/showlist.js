@@ -1,67 +1,56 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router"
-import { CurrentUser } from "../contexts/CurrentUser";
 
 function TodoListShow() {
 
-	const { TodolistId } = useParams()
+	const { id } = useParams()
 
 	const history = useHistory()
-
-	const { currentUser } = useContext(CurrentUser)
 
 	const [todo, setTodo] = useState(null)
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(`http://localhost:5000/todolist/${TodolistId}`)
+			const response = await fetch(`http://localhost:5000/todo/${id}`)
 			const resData = await response.json()
 			setTodo(resData)
 		}
 		fetchData()
-	}, [TodolistId])
+	}, [id])
+	
+	if (todo==null){
+		return <h1>Loading</h1>
+	}
 
 	function editToDoList() {
-		history.push(`/todolist/${todo.TodolistId}/edit`)
+		history.push(`/todo/${todo.id}/edit`)
 	}
 
 	async function deleteToDoList() {
-		await fetch(`http://localhost:5000/todolist/${todo.TodolistId}`, {
+		await fetch(`http://localhost:5000/todo/${todo.id}`, {
 			method: 'DELETE'
 		})
-		history.push('/todolist')
+		history.push('/todo')
     }
-
-	let listActions = null
-
-	if (currentUser?.role === 'admin') {
-		listActions = (
-			<>
-				<button className="btn btn-warning" onClick={editToDoList}>
-					Edit
-				</button>{` `}
-				<button type="submit" className="btn btn-danger" onClick={deleteToDoList}>
-					Delete
-				</button>
-			</>
-		)
-	}
 
 	return (
 		<main>
 			<div className="row">
-				<div className="col-sm-6">
+				<div>
 					<h1>{todo.listname}</h1>
 					<ul>
-						<li>
-							{todo.listitem1}
-							{todo.listitem2}
-							{todo.listitem3}
-							{todo.listitem4}
-							{todo.listitem5}
-						</li>
+						<li>{todo.listitem1}</li>
+						<li>{todo.listitem2}</li>
+						<li>{todo.listitem3}</li>
+						<li>{todo.listitem4}</li>
+						<li>{todo.listitem5}</li>
 					</ul>
-					{listActions}
+					<button className="btn btn-warning" onClick={editToDoList}>
+						Edit
+					</button>{` `}
+					<button type="submit" className="btn btn-danger" onClick={deleteToDoList}>
+						Delete
+					</button>
 				</div>
 			</div>
 		</main>

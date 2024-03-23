@@ -9,28 +9,28 @@ function ToDoIndex(data) {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(`http://localhost:5000/todolist`)
+			const response = await fetch(`http://localhost:5000/todo`)
 			const resData = await response.json()
 			setTodos(resData)
 		}
 		fetchData()
 	}, [])
 
-	let todosFormatted = todo.map((todolist) => {
+	let todosFormatted = todo.map((todo) => {
 		return (
-			<div className="col-sm-6" key={todolist.TodolistId}>
+			<div className="card" key={todo.id}>
 				<h2>
-					<a href="#" onClick={() => history.push(`/todolist/${todolist.TodolistId}`)} >
-						{todolist.listname}
+					<a href="/#" onClick={() => history.push(`/todo/${todo.id}`)} >
+						{todo.listname}
 					</a>
 				</h2>
-				<p className="text-center">
-					{todolist.listitem1}
-                    {todolist.listitem2}
-                    {todolist.listitem3}
-                    {todolist.listitem4}
-                    {todolist.listitem5}
-				</p>
+				<ul>
+					<li>{todo.listitem1}</li>
+                    <li>{todo.listitem2}</li>
+                    <li>{todo.listitem3}</li>
+                    <li>{todo.listitem4}</li>
+                    <li>{todo.listitem5}</li>
+				</ul>
 			</div>
 		)
 	})
@@ -40,6 +40,7 @@ function ToDoIndex(data) {
 			<div className="row">
 				{todosFormatted}
 			</div>
+			<button className='button' href="/#" onClick={() => history.push("/todo/new")}>Add your own list</button>
 		</main>
 	)
 }

@@ -8,8 +8,6 @@
 
 body {
   background-color: #BACDB0;
-  color: #2E2C2F;
-  padding: 20px;
 }
 
 .App {
@@ -17,7 +15,12 @@ body {
   width: 80%;
   height: 80%;
   margin: 0 auto;
-  border-radius: 20px;;
+  border-radius: 20px;
+}
+
+.nav {
+  background-color: #426848;
+  margin-bottom: 30px;
 }
 
 header {
@@ -45,25 +48,57 @@ main {
   padding: 20px;
 }
 
+.card{
+  background-color: #729B79;
+  width: 35%;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: darkslategray;
+}
+
+ul {
+  list-style-type: none;
+}
+
 .row {
-  color: #2E2C2F;
   padding: 20px;
 }
 
 .input {
   padding: 20px;
+  text-align: center;
+}
+
+.form-group {
+  padding: 10px;
 }
 
 .form-control {
-  background-color: #F3E8EE;
-  color: #2E2C2F;
   margin: 0 auto;
   width: 70%;
 }
 
+.select {
+  width: 30%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 .button {
   background-color: #475B63;
-  color: #F3E8EE;
+  color: white;
   padding: 10px 20px 10px 20px;
   border-radius: 10px;
+}
+
+button {
+  margin: 20px;
 }

@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-// import LoginForm from './users/login'
 import SignUpForm from './users/signup'
 import CurrentUserProvider from './contexts/CurrentUser'
 import EditList from './components/editlist'
@@ -19,10 +18,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={LogInForm} />
           <Route exact path="/signup" component={SignUpForm} />
-          <Route exact path="/todolist" component={ToDoIndex} />
-          <Route exact path="/todolist/new" component={NewList} />
-          <Route exact path="/todolist/:TodolistId" component={TodoListShow} />
-          <Route exact path="/todolist/:TodolistId/edit" component={EditList} />
+          <Route exact path="/todo" component={ToDoIndex} />
+          <Route exact path="/todo/new" component={NewList} />
+          <Route exact path="/todo/:id" component={TodoListShow} />
+          <Route exact path="/todo/:id/edit" component={EditList} />
         </Switch>
       </BrowserRouter>
     </CurrentUserProvider>
