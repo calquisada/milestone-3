@@ -10,7 +10,7 @@ If you ever need a one stop for a to-do list, this is the app!
 The app is relatively simple and straightforward. This app was done by group B and consisted of Christian, Megan, and Cameron. THis to-do list was created through react and the use of sequelize for databases purposes. Connection from front-end to the back-end was very crucial.
 
 # Demo
-[Live Demo]
+[Live Demo] Missing website .... add link here when app is deployed !!!!!!!
 
 ## Code Type and Lanuaged Used
 - HTML
