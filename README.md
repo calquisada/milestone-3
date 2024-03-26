@@ -77,3 +77,6 @@ This full-stack app was created by using a combination of HTML, CSS, JavaScript,
 
 ### 03/23/2024
 - Finished readme (missing demo link since app has yet to be deployed)
+
+### 03/25/2024
+- Testing Testing Testing
