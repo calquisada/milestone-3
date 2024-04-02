@@ -11,8 +11,13 @@ router.get('/', async (req, res) => {
 
 // Adding a new Todo
 router.post('/', async (req, res) => {
-    const todo = await lists.create(req.body)
-    res.json(todo)
+    try {
+        const todo = await lists.create(req.body)
+        res.json(todo)
+    } catch (error) {
+        console.error('Error inserting data into the database:', error);
+        res.status(500).json({ error: 'An error occurred while saving the to-do list.' });
+    }
 })
 
 // Deleting a Todo
