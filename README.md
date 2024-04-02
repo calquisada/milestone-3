@@ -7,14 +7,14 @@ To-Do List Full Stack App
 If you ever need a one stop for a to-do list, this is the app!
 
 # About The App
-The app is relatively simple and straightforward. This app was done by group B and consisted of Christian, Megan, and Cameron. THis to-do list was created through react and the use of sequelize for databases purposes. Connection from front-end to the back-end was very crucial.
+The app is relatively simple and straightforward. This app was done by group B and consisted of Christian, Megan, and Cameron. This to-do list was created through react and the use of sequelize for databases purposes. Connection from front-end to the back-end was very crucial.
 
 # Demo
 [Live Demo] Missing website .... add link here when app is deployed !!!!!!!
 
 ## Code Type and Lanuaged Used
 - HTML
-- CASS
+- CSS
 - JavaScript
 - Sequelize
 - React
@@ -77,5 +77,10 @@ This full-stack app was created by using a combination of HTML, CSS, JavaScript,
 
 ### 03/23/2024
 - Finished readme (missing demo link since app has yet to be deployed)
+
+### 04/02/2024
+- App was not connected to the database properly and was fixed using pgAdmin
+- Made sure the models and tables were connected properly
+- Columns were fixed to match the codes
 
 
